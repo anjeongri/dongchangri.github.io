@@ -218,7 +218,7 @@ const questionsData = [
     {
         id: 'Q12',
         text: 'Are you pregnant or is there a chance you could become pregnant during the next month?',
-        options: ['Yes', 'No', 'Unknown'],
+        options: ['Yes', 'No', 'Unknown', 'Not Applicable'],
         type: 'single',
         condition: () => document.getElementsByName('recipient')[0].value === 'Myself' && document.getElementsByName('vaccinationType')[0].value === 'Routine'
     },
