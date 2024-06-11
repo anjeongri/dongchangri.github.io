@@ -182,7 +182,7 @@ const questionsData = [
     },
     {
         id: 'Q7',
-        text: 'In the past 3 months, have you taken medications that weaken your immune system, such as prednisone or other steroids; anticancer drugs; biologic drugs for autoimmune diseases such as rheumatoid arthritis, Crohn`s disease, or psoriasis; or had radiation treatments?',
+        text: 'In the past 3 months, have you taken medications that weaken your immune system, such as prednisone or other steroids; anticancer drugs; biologic drugs for autoimmune diseases such as rheumatoid arthritis, Crohn's disease, or psoriasis; or had radiation treatments?',
         options: ['Yes', 'No', 'Unknown'],
         type: 'single',
         condition: () => document.getElementsByName('recipient')[0].value === 'Myself' && document.getElementsByName('vaccinationType')[0].value === 'Routine'
@@ -267,7 +267,7 @@ const questionsData = [
     },
     {
         id: 'Q7',
-        text: 'In the past 3 months, has the child taken medications that weaken his/her immune system, such as prednisone or other steroids; anticancer drugs; biologic drugs for autoimmune diseases such as rheumatoid arthritis, Crohn`s disease, or psoriasis; or had radiation treatments?',
+        text: 'In the past 3 months, has the child taken medications that weaken his/her immune system, such as prednisone or other steroids; anticancer drugs; biologic drugs for autoimmune diseases such as rheumatoid arthritis, Crohn's disease, or psoriasis; or had radiation treatments?',
         options: ['Yes', 'No', 'Unknown'],
         type: 'single',
         condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'Routine'
