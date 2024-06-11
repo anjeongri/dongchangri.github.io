@@ -90,7 +90,7 @@ const questionsData = [
         condition: () => (document.getElementsByName('recipient')[0].value === 'Myself' && document.getElementsByName('vaccinationType')[0].value === 'COVID' ) || ( document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === '12 and Over' )
     },
 	// (other COVID-19 questions for Age 12 and Over)
-    // COVID-19 questions for Age 6 months - 11 years
+    // COVID-19 questions for Under 12
     {
         id: 'Q1',
         text: 'Is your child sick today?',
@@ -182,7 +182,7 @@ const questionsData = [
     },
     {
         id: 'Q7',
-        text: 'In the past 3 months, have you taken medications that weaken your immune system, such as prednisone or other steroids; anticancer drugs; biologic drugs for autoimmune diseases such as rheumatoid arthritis, Crohn's disease, or psoriasis; or had radiation treatments?',
+        text: 'In the past 3 months, have you taken medications that weaken your immune system, such as prednisone or other steroids; anticancer drugs; biologic drugs for autoimmune diseases such as rheumatoid arthritis, Crohn`s disease, or psoriasis; or had radiation treatments?',
         options: ['Yes', 'No', 'Unknown'],
         type: 'single',
         condition: () => document.getElementsByName('recipient')[0].value === 'Myself' && document.getElementsByName('vaccinationType')[0].value === 'Routine'
@@ -218,7 +218,7 @@ const questionsData = [
     {
         id: 'Q12',
         text: 'Are you pregnant or is there a chance you could become pregnant during the next month?',
-        options: ['Yes', 'No', 'Unknown', 'Not Applicable'],
+        options: ['Yes', 'No', 'Unknown'],
         type: 'single',
         condition: () => document.getElementsByName('recipient')[0].value === 'Myself' && document.getElementsByName('vaccinationType')[0].value === 'Routine'
     },
@@ -267,7 +267,7 @@ const questionsData = [
     },
     {
         id: 'Q7',
-        text: 'In the past 3 months, has the child taken medications that weaken his/her immune system, such as prednisone or other steroids; anticancer drugs; biologic drugs for autoimmune diseases such as rheumatoid arthritis, Crohn's disease, or psoriasis; or had radiation treatments?',
+        text: 'In the past 3 months, has the child taken medications that weaken his/her immune system, such as prednisone or other steroids; anticancer drugs; biologic drugs for autoimmune diseases such as rheumatoid arthritis, Crohn`s disease, or psoriasis; or had radiation treatments?',
         options: ['Yes', 'No', 'Unknown'],
         type: 'single',
         condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'Routine'
