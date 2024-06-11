@@ -40,3 +40,7 @@ body {
 #summaryContent .highlight {
 	color: red;
 }
+
+h1.card-title {
+font-size:30px;
+}
