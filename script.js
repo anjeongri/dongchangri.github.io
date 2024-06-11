@@ -90,41 +90,41 @@ const questionsData = [
         condition: () => (document.getElementsByName('recipient')[0].value === 'Myself' && document.getElementsByName('vaccinationType')[0].value === 'COVID' ) || ( document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === '12 and Over' )
     },
 	// (other COVID-19 questions for Age 12 and Over)
-    // COVID-19 questions for Under 12
+    // COVID-19 questions for 6 months - 11 years
     {
         id: 'Q1',
         text: 'Is your child sick today?',
         options: ['Yes', 'No'],
         type: 'single',
-        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === 'Under 12'
+        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === '6 months - 11 years'
     },
     {
         id: 'Q2',
         text: 'Has your child received a COVID-19 vaccination before?',
         options: ['Yes', 'No'],
         type: 'single',
-        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === 'Under 12'
+        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === '6 months - 11 years'
     },
     {
         id: 'Q3',
         text: 'Has your child had an adverse or allergic reaction to a prior COVID vaccine, anaphylaxis due to any cause, or allergic reaction to any other vaccine or injectable therapy?',
         options: ['Yes', 'No'],
         type: 'single',
-        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === 'Under 12'
+        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === '6 months - 11 years'
     },
     {
         id: 'Q4',
         text: 'Does your child have hemophilia or other bleeding disorder or take a blood thinner?',
         options: ['Yes', 'No'],
         type: 'single',
-        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === 'Under 12'
+        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === '6 months - 11 years'
     },
     {
         id: 'Q5',
         text: 'Does your child have an immunocompromising condition (HIV/AIDS, cancer, leukemia, etc.) or take an immunocompromising medicine or treatment (steroids, chemotherapy, radiation therapy, etc.)?',
         options: ['Yes', 'No'],
         type: 'single',
-        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === 'Under 12'
+        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === '6 months - 11 years'
     },
     {
         id: 'Q6',
@@ -135,7 +135,7 @@ const questionsData = [
             'History of myocarditis or pericarditis'
         ],
         type: 'multiple',
-        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === 'Under 12'
+        condition: () => document.getElementsByName('recipient')[0].value === 'My Child' && document.getElementsByName('vaccinationType')[0].value === 'COVID' && document.getElementsByName('ageGroup')[0].value === '6 months - 11 years'
     },
     // Routine vaccine questions for adult
     {
