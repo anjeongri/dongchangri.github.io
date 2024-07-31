@@ -18,7 +18,7 @@ const questionsData = [
     {
         id: 'vaccinationType',
         text: 'Type of vaccination:',
-        options: ['Routine', 'COVID', 'Influenza'],
+        options: ['All other vaccines', 'COVID', 'Influenza'],
         type: 'single'
     },
     {
@@ -192,7 +192,11 @@ const questionsData = [
         text: 'In the past year, have you received transfusion of blood or blood products, or been given immune (gamma) globulin or an antiviral drug?',
         options: ['Yes', 'No', 'Unknown'],
         type: 'single',
-        condition: () => document.getElementsByName('recipient')[0].value === 'Myself' && document.getElementsByName('vaccinationType')[0].value === 'Routine'
+        condition: () => document.getElementsByName('recipient')[0].value === 'Myself' && document.getElementsByName('vaccinationType')[0].value === '
+
+
+
+'
     },
     {
         id: 'Q9',
