@@ -18,7 +18,7 @@ const questionsData = [
     {
         id: 'vaccinationType',
         text: 'Type of vaccination:',
-        options: ['All other vaccines', 'COVID', 'Influenza'],
+        options: ['Routine', 'COVID', 'Influenza'],
         type: 'single'
     },
     {
