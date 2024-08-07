@@ -5,7 +5,7 @@ const questionsData = [
 
     {
         id: 'welcome',
-        text: 'Before you begin filling out the vaccine screening questionnaires, please note that we will not ask for patient identification informtation and your answers will not be recorded. After completing vaccine screening questionaires, please show the results to the nurse.',
+        text: 'Before you begin filling out the vaccine screening questionnaires, please note that we will not ask for patient identification informtation and your answers will not be recorded. After completing vaccine screening questionnaires, please show the results to the nurse.',
         options: ['Continue'],
         type: 'single'
     },
