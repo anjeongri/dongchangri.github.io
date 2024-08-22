@@ -44,3 +44,9 @@ body {
 h1.card-title {
 font-size:30px;
 }
+
+
+.btn-vis {
+	color: white;
+	border-color: white;
+}
