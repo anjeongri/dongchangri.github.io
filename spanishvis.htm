@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,61 +10,58 @@
 <body>
     <div class="container mt-5">
         <div class="card">
-            <div class="card-body">
-                <h1 class="card-title text-center" id="page_title">VIS</h1>
-				<div style="text-align:center;">
-				The VIS provided on the current webpage is from the CDC.
-				</div>
+            <div class="card-body text-center">
+                <h1 class="card-title" id="page_title">VIS</h1>
+                <p>El VIS proporcionado en la página web actual es del CDC.</p>
 
-                <div id="buttonContainer">
-                    <!-- First step buttons will be dynamically inserted here -->
+                <div id="buttonContainer"></div>
+                <div id="secondStepContainer" class="d-none"></div>
+                <div id="homeContainer">
+                    <button type="button" class="btn btn-success btn-block mt-3" onclick="location.href='./';">Volver a Inicio</button>
                 </div>
-                <div id="secondStepContainer" style="display: none;">
-                    <!-- Second step buttons will be dynamically inserted here -->
-                </div>
-                <div id="homeContainer" style="display: block;">
-                    <button type="button" class="btn btn-success btn-block mt-3" onclick="javascript:window.location.reload();">Back to Home</button>
+                <div id="backContainer" class="d-none">
+                    <button type="button" class="btn btn-success btn-block mt-3" onclick="reset()">Regresar</button>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Sample data for the buttons
         const firstStepButtons = [
-            { text: '2,4,6-month', subButtons: [
-                { text: 'First vaccine', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_multi_vaccine_infants.pdf' },
+            { text: '2,4,6 meses', subButtons: [
+                { text: 'Primera vacuna', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_multi_vaccine_infants.pdf' },
                 { text: 'Rotavirus', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_rotavirus.pdf' }
             ]},
-            { text: '12-month', subButtons: [
+            { text: '12 meses', subButtons: [
                 { text: 'Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hepatitis_a.pdf' },
                 { text: 'Hib', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hib.pdf' },
                 { text: 'PCV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_pcv.pdf' },
                 { text: 'MMR', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_mmr.pdf' },
                 { text: 'Varicella', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_varicella.pdf' }
             ]},
-            { text: '18-month', subButtons: [
+            { text: '18 meses', subButtons: [
                 { text: 'Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hepatitis_a.pdf' },
                 { text: 'DTaP', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_dtap.pdf' }
             ]},
-            { text: '4-year', subButtons: [
+            { text: '4 años', subButtons: [
                 { text: 'DTaP', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_dtap.pdf' },
                 { text: 'Polio', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_polio_ipv.pdf' },
                 { text: 'MMRV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_mmrv.pdf' }
             ]},
-            { text: '9 & 11-year', subButtons: [
+            { text: '9 y 11 años', subButtons: [
                 { text: 'HPV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hpv.pdf' },
                 { text: 'Menveo', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_meningococcal.pdf' },
                 { text: 'Tdap', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_tdap.pdf' }
             ]},
-            { text: 'Flu, COVID & JEV', subButtons: [
-                { text: 'Flu', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_flu_inactive.pdf' },
+            { text: 'Gripe, COVID y JEV', subButtons: [
+                { text: 'Gripe', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_flu_inactive.pdf' },
                 { text: 'JEV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_je_ixiaro.pdf' },
                 { text: 'COVID', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_covid-19.pdf' }
             ]},
-            { text: 'Adult vaccines', subButtons: [
+            { text: 'Vacunas para adultos', subButtons: [
                 { text: 'Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hepatitis_a.pdf' },
                 { text: 'Hep B', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hepatitis_b.pdf' },
                 { text: 'Hib', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hib.pdf' },
@@ -78,36 +75,51 @@
                 { text: 'Menveo', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_meningococcal.pdf' },
                 { text: 'Men B', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_meningococcal_b.pdf' },
                 { text: 'Polio', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_polio_ipv.pdf' },
-                { text: 'RSV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_rsv.pdf' },
-                { text: 'RSV (Nirsevimab)', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_iis_rsv.pdf' },
-                { text: 'Zoster', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_zoster_recombinant.pdf' },
-                { text: 'Rabies', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_rabies.pdf' },
-                { text: 'Typhoid', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_typhoid.pdf' },
-                { text: 'Yellow fever', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_yellow_fever.pdf' }
+                { text: 'VRS', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_rsv.pdf' },
+                { text: 'VRS (Nirsevimab)', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_iis_rsv.pdf' },
+                { text: 'Herpes zóster', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_zoster_recombinant.pdf' },
+                { text: 'Rabia', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_rabies.pdf' },
+                { text: 'Tifoidea', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_typhoid.pdf' },
+                { text: 'Fiebre amarilla', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_yellow_fever.pdf' }
             ]}
         ];
 
-        $(document).ready(function() {
-            // Render first step buttons
+
+        $(document).ready(showFirstStep);
+
+        function showFirstStep() {
             firstStepButtons.forEach((button, index) => {
-                $('#buttonContainer').append(`<button type="button" class="btn btn-secondary btn-block mt-3" onclick="showSecondStep(${index}, this)">${button.text}</button>`);
+                $('#buttonContainer').append(
+                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="showSecondStep(${index}, this)">${button.text}</button>`
+                );
             });
-        });
+        }
 
-        function showSecondStep(index, page_title_button) {
-			document.getElementById('page_title').innerText = page_title_button.innerText;
-
-            const secondStepContainer = $('#secondStepContainer');
-            secondStepContainer.empty(); // Clear any previous buttons
+        function showSecondStep(index, pageTitleButton) {
+            $('#page_title').text(pageTitleButton.innerText);
+            const secondStepContainer = $('#secondStepContainer').empty();
             firstStepButtons[index].subButtons.forEach(subButton => {
-                secondStepContainer.append(`<button type="button" class="btn btn-secondary btn-block mt-3" onclick="openLink('${subButton.url}')">${subButton.text}</button>`);
+                secondStepContainer.append(
+                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="openLink('${subButton.url}')">${subButton.text}</button>`
+                );
             });
-            $('#buttonContainer').hide();
-            secondStepContainer.show();
+            toggleContainers(false);
+        }
+
+        function reset() {
+            $('#page_title').text('VIS');
+            toggleContainers(true);
         }
 
         function openLink(url) {
             window.open(url, '_blank');
+        }
+
+        function toggleContainers(showFirstStep) {
+            $('#buttonContainer').toggle(showFirstStep);
+            $('#secondStepContainer').toggleClass('d-none', showFirstStep);
+            $('#homeContainer').toggle(showFirstStep);
+            $('#backContainer').toggleClass('d-none', showFirstStep);
         }
     </script>
 </body>
