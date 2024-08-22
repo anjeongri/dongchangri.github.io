@@ -13,7 +13,7 @@
             <div class="card-body">
                 <h1 class="card-title text-center" id="page_title">VIS</h1>
 				<div style="text-align:center;">
-				The VIS provided on the current webpage is from the CDC.
+				미국 CDC 홈페이지에서 직접 백신안내문을 다운로드 하게 됩니다. 동의하시면 아래 백신 이름을 누르세요.
 				</div>
 
                 <div id="buttonContainer">
@@ -34,56 +34,56 @@
     <script>
         // Sample data for the buttons
         const firstStepButtons = [
-            { text: '2,4,6-month', subButtons: [
-                { text: 'First vaccine', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_multi_vaccine_infants.pdf' },
-                { text: 'Rotavirus', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_rotavirus.pdf' }
+            { text: '2,4,6개월', subButtons: [
+                { text: '첫 백신', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_multi_vaccine_infants.pdf' },
+                { text: '로타바이러스', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_rotavirus.pdf' }
             ]},
-            { text: '12-month', subButtons: [
-                { text: 'Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hepatitis_a.pdf' },
-                { text: 'Hib', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hib.pdf' },
-                { text: 'PCV', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/pcv.html' },
-                { text: 'MMR', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_mmr.pdf' },
-                { text: 'Varicella', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_varicella.pdf' }
+            { text: '12개월', subButtons: [
+                { text: 'A형 간염 Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hepatitis_a.pdf' },
+                { text: 'B형 헤모필루스 인플루엔자 Hib', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hib.pdf' },
+                { text: '폐렴구균 PCV13', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_pcv13.pdf' },
+                { text: '홍역, 유행성이하선염, 풍진 MMR', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_mmr.pdf' },
+                { text: '수두 Varicella', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_varicella.pdf' }
             ]},
-            { text: '18-month', subButtons: [
-                { text: 'Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hepatitis_a.pdf' },
-                { text: 'DTaP', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_dtap.pdf' }
+            { text: '18개월', subButtons: [
+                { text: 'A형 간염 Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hepatitis_a.pdf' },
+                { text: '디프테리아, 파상풍, 백일해 DTaP', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_dtap.pdf' }
             ]},
-            { text: '4-year', subButtons: [
-                { text: 'DTaP', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_dtap.pdf' },
-                { text: 'Polio', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_polio_ipv.pdf' },
-                { text: 'MMRV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_mmrv.pdf' }
+            { text: '4세', subButtons: [
+                { text: '디프테리아, 파상풍, 백일해 DTaP', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_dtap.pdf' },
+                { text: '소아마비 Polio', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_polio_ipv.pdf' },
+                { text: '홍역, 유행성이하선염, 풍진, 수두 MMRV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_mmrv.pdf' }
             ]},
-            { text: '9 & 11-year', subButtons: [
-                { text: 'HPV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hpv.pdf' },
-                { text: 'Menveo', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_meningococcal.pdf' },
-                { text: 'Tdap', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_tdap.pdf' }
+            { text: '9 & 11세', subButtons: [
+                { text: '인유두종 바이러스 HPV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hpv.pdf' },
+                { text: 'ACWY형 수막구균 Menveo', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_meningococcal.pdf' },
+                { text: '파상풍, 디프테리아, 백일해 Tdap', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_tdap.pdf' }
             ]},
-            { text: 'Flu, COVID & JEV', subButtons: [
-                { text: 'Flu', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_flu_inactive.pdf' },
-                { text: 'JEV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_je_ixiaro.pdf' },
-                { text: 'COVID', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_covid-19.pdf' }
+            { text: '독감, 코로나 & 일본뇌염', subButtons: [
+                { text: '독감 Flu', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_flu_inactive.pdf' },
+                { text: '일본뇌염 JEV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_je_ixiaro.pdf' },
+                { text: '코로나 COVID', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_covid-19.pdf' }
             ]},
-            { text: 'Adult vaccines', subButtons: [
-                { text: 'Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hepatitis_a.pdf' },
-                { text: 'Hep B', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hepatitis_b.pdf' },
-                { text: 'Hib', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hib.pdf' },
-                { text: 'PCV13', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_pcv13.pdf' },
-                { text: 'PPSV23', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_ppsv.pdf' },
-                { text: 'MMR', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_mmr.pdf' },
-                { text: 'Varicella', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_varicella.pdf' },
-                { text: 'Tdap', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_tdap.pdf' },
-                { text: 'Td', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_td.pdf' },
-                { text: 'HPV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hpv.pdf' },
-                { text: 'Menveo', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_meningococcal.pdf' },
-                { text: 'Men B', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_meningococcal_b.pdf' },
-                { text: 'Polio', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_polio_ipv.pdf' },
-                { text: 'RSV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_rsv.pdf' },
-                { text: 'RSV (Nirsevimab)', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_iis_rsv.pdf' },
-                { text: 'Zoster', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_zoster_recombinant.pdf' },
-                { text: 'Rabies', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_rabies.pdf' },
-                { text: 'Typhoid', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_typhoid.pdf' },
-                { text: 'Yellow fever', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_yellow_fever.pdf' }
+            { text: '성인 백신', subButtons: [
+                { text: 'A형 간염 Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hepatitis_a.pdf' },
+                { text: 'B형 간염 Hep B', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hepatitis_b.pdf' },
+                { text: 'B형 헤모필루스 인플루엔자 Hib', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hib.pdf' },
+                { text: '폐렴구균 PCV13', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_pcv13.pdf' },
+                { text: '폐렴구균성 다당류 PPSV23', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_ppsv.pdf' },
+                { text: '홍역, 유행성이하선염, 풍진 MMR', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_mmr.pdf' },
+                { text: '수두 Varicella', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_varicella.pdf' },
+                { text: '파상풍, 디프테리아, 백일해 Tdap', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_tdap.pdf' },
+                { text: '파상풍, 디프테리아 Td', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_td.pdf' },
+                { text: '인유두종 바이러스 HPV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_hpv.pdf' },
+                { text: 'ACWY형 수막구균 Menveo', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_meningococcal.pdf' },
+                { text: 'B형 수막구균 Men B', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_meningococcal_b.pdf' },
+                { text: '소아마비 Polio', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_polio_ipv.pdf' },
+                { text: '호흡기 세포융합 바이러스 RSV', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_rsv.pdf' },
+                { text: '호흡기 세포융합 바이러스 예방적 항체 RSV (Nirsevimab)', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_iis_rsv.pdf' },
+                { text: '대상포진 Zoster', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_zoster_recombinant.pdf' },
+                { text: '광견병 Rabies', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_rabies.pdf' },
+                { text: '장티푸스 Typhoid', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_typhoid.pdf' },
+                { text: '황열병 Yellow fever', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_yellow_fever.pdf' }
             ]}
         ];
 
