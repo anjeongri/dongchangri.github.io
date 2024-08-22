@@ -10,29 +10,26 @@
 <body>
     <div class="container mt-5">
         <div class="card">
-            <div class="card-body">
-                <h1 class="card-title text-center" id="page_title">VIS</h1>
-				<div style="text-align:center;">
-				미국 CDC 홈페이지에서 직접 백신안내문을 다운로드 하게 됩니다. 동의하시면 아래 백신 이름을 누르세요.
-				</div>
+            <div class="card-body text-center">
+                <h1 class="card-title" id="page_title">VIS</h1>
+                <p>미국 CDC 홈페이지에서 직접 백신안내문을 다운로드 하게 됩니다. 동의하시면 아래 백신 이름을 누르세요.</p>
 
-                <div id="buttonContainer">
-                    <!-- First step buttons will be dynamically inserted here -->
+                <div id="buttonContainer"></div>
+                <div id="secondStepContainer" class="d-none"></div>
+                <div id="homeContainer">
+                    <button type="button" class="btn btn-success btn-block mt-3" onclick="location.href='/';">홈으로</button>
                 </div>
-                <div id="secondStepContainer" style="display: none;">
-                    <!-- Second step buttons will be dynamically inserted here -->
-                </div>
-                <div id="homeContainer" style="display: block;">
-                    <button type="button" class="btn btn-success btn-block mt-3" onclick="javascript:window.location.reload();">Back to Home</button>
+                <div id="backContainer" class="d-none">
+                    <button type="button" class="btn btn-success btn-block mt-3" onclick="reset()">뒤로</button>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Sample data for the buttons
         const firstStepButtons = [
             { text: '2,4,6개월', subButtons: [
                 { text: '첫 백신', url: 'https://www.immunize.org/wp-content/uploads/vis/korean_multi_vaccine_infants.pdf' },
@@ -87,27 +84,41 @@
             ]}
         ];
 
-        $(document).ready(function() {
-            // Render first step buttons
+        $(document).ready(showFirstStep);
+
+        function showFirstStep() {
             firstStepButtons.forEach((button, index) => {
-                $('#buttonContainer').append(`<button type="button" class="btn btn-secondary btn-block mt-3" onclick="showSecondStep(${index}, this)">${button.text}</button>`);
+                $('#buttonContainer').append(
+                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="showSecondStep(${index}, this)">${button.text}</button>`
+                );
             });
-        });
+        }
 
-        function showSecondStep(index, page_title_button) {
-			document.getElementById('page_title').innerText = page_title_button.innerText;
-
-            const secondStepContainer = $('#secondStepContainer');
-            secondStepContainer.empty(); // Clear any previous buttons
+        function showSecondStep(index, pageTitleButton) {
+            $('#page_title').text(pageTitleButton.innerText);
+            const secondStepContainer = $('#secondStepContainer').empty();
             firstStepButtons[index].subButtons.forEach(subButton => {
-                secondStepContainer.append(`<button type="button" class="btn btn-secondary btn-block mt-3" onclick="openLink('${subButton.url}')">${subButton.text}</button>`);
+                secondStepContainer.append(
+                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="openLink('${subButton.url}')">${subButton.text}</button>`
+                );
             });
-            $('#buttonContainer').hide();
-            secondStepContainer.show();
+            toggleContainers(false);
+        }
+
+        function reset() {
+            $('#page_title').text('VIS');
+            toggleContainers(true);
         }
 
         function openLink(url) {
             window.open(url, '_blank');
+        }
+
+        function toggleContainers(showFirstStep) {
+            $('#buttonContainer').toggle(showFirstStep);
+            $('#secondStepContainer').toggleClass('d-none', showFirstStep);
+            $('#homeContainer').toggle(showFirstStep);
+            $('#backContainer').toggleClass('d-none', showFirstStep);
         }
     </script>
 </body>
