@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title text-center" id="page_title">VIS</h1>
+				<div style="text-align:center;">
+				The VIS provided on the current webpage is from the CDC.
+				</div>
+
+                <div id="buttonContainer">
+                    <!-- First step buttons will be dynamically inserted here -->
+                </div>
+                <div id="secondStepContainer" style="display: none;">
+                    <!-- Second step buttons will be dynamically inserted here -->
+                </div>
+                <div id="homeContainer" style="display: block;">
+                    <button type="button" class="btn btn-success btn-block mt-3" onclick="javascript:window.location.reload();">Back to Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Sample data for the buttons
+        const firstStepButtons = [
+            { text: '2,4,6-month', subButtons: [
+                { text: 'First vaccine', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_multi_vaccine_infants.pdf' },
+                { text: 'Rotavirus', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_rotavirus.pdf' }
+            ]},
+            { text: '12-month', subButtons: [
+                { text: 'Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hepatitis_a.pdf' },
+                { text: 'Hib', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hib.pdf' },
+                { text: 'PCV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_pcv.pdf' },
+                { text: 'MMR', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_mmr.pdf' },
+                { text: 'Varicella', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_varicella.pdf' }
+            ]},
+            { text: '18-month', subButtons: [
+                { text: 'Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hepatitis_a.pdf' },
+                { text: 'DTaP', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_dtap.pdf' }
+            ]},
+            { text: '4-year', subButtons: [
+                { text: 'DTaP', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_dtap.pdf' },
+                { text: 'Polio', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_polio_ipv.pdf' },
+                { text: 'MMRV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_mmrv.pdf' }
+            ]},
+            { text: '9 & 11-year', subButtons: [
+                { text: 'HPV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hpv.pdf' },
+                { text: 'Menveo', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_meningococcal.pdf' },
+                { text: 'Tdap', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_tdap.pdf' }
+            ]},
+            { text: 'Flu, COVID & JEV', subButtons: [
+                { text: 'Flu', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_flu_inactive.pdf' },
+                { text: 'JEV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_je_ixiaro.pdf' },
+                { text: 'COVID', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_covid-19.pdf' }
+            ]},
+            { text: 'Adult vaccines', subButtons: [
+                { text: 'Hep A', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hepatitis_a.pdf' },
+                { text: 'Hep B', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hepatitis_b.pdf' },
+                { text: 'Hib', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hib.pdf' },
+                { text: 'PCV13', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_pcv.pdf' },
+                { text: 'PPSV23', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_ppsv.pdf' },
+                { text: 'MMR', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_mmr.pdf' },
+                { text: 'Varicella', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_varicella.pdf' },
+                { text: 'Tdap', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_tdap.pdf' },
+                { text: 'Td', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_td.pdf' },
+                { text: 'HPV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_hpv.pdf' },
+                { text: 'Menveo', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_meningococcal.pdf' },
+                { text: 'Men B', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_meningococcal_b.pdf' },
+                { text: 'Polio', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_polio_ipv.pdf' },
+                { text: 'RSV', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_rsv.pdf' },
+                { text: 'RSV (Nirsevimab)', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_iis_rsv.pdf' },
+                { text: 'Zoster', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_zoster_recombinant.pdf' },
+                { text: 'Rabies', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_rabies.pdf' },
+                { text: 'Typhoid', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_typhoid.pdf' },
+                { text: 'Yellow fever', url: 'https://www.immunize.org/wp-content/uploads/vis/spanish_yellow_fever.pdf' }
+            ]}
+        ];
+
+        $(document).ready(function() {
+            // Render first step buttons
+            firstStepButtons.forEach((button, index) => {
+                $('#buttonContainer').append(`<button type="button" class="btn btn-secondary btn-block mt-3" onclick="showSecondStep(${index}, this)">${button.text}</button>`);
+            });
+        });
+
+        function showSecondStep(index, page_title_button) {
+			document.getElementById('page_title').innerText = page_title_button.innerText;
+
+            const secondStepContainer = $('#secondStepContainer');
+            secondStepContainer.empty(); // Clear any previous buttons
+            firstStepButtons[index].subButtons.forEach(subButton => {
+                secondStepContainer.append(`<button type="button" class="btn btn-secondary btn-block mt-3" onclick="openLink('${subButton.url}')">${subButton.text}</button>`);
+            });
+            $('#buttonContainer').hide();
+            secondStepContainer.show();
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
