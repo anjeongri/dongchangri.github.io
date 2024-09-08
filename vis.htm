@@ -48,4 +48,80 @@
             ]},
             { text: '4-year', subButtons: [
                 { text: 'DTaP', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/dtap.html' },
-                { text: 'Polio', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-s
+                { text: 'Polio', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/ipv.html' },
+                { text: 'MMRV', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/mmrv.html' }
+            ]},
+            { text: '9 & 11-year', subButtons: [
+                { text: 'HPV', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/hpv.html' },
+                { text: 'Menveo', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/mening.html' },
+                { text: 'Tdap', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/tdap.html' }
+            ]},
+            { text: 'Flu, COVID & JEV', subButtons: [
+                { text: 'Flu', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/flu.html' },
+                { text: 'JEV', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/je-ixiaro.html' },
+                { text: 'COVID', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/covid-19.html' }
+            ]},
+            { text: 'Adult vaccines', subButtons: [
+                { text: 'Hep A', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/hep-a.html' },
+                { text: 'Hep B', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/hep-b.html' },
+                { text: 'Hib', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/hib.html' },
+                { text: 'PCV13', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/pcv.html' },
+                { text: 'PPSV23', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/ppv.html' },
+                { text: 'MMR', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/mmr.html' },
+                { text: 'Varicella', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/varicella.html' },
+                { text: 'Tdap', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/tdap.html' },
+                { text: 'Td', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/td.html' },
+                { text: 'HPV', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/hpv.html' },
+                { text: 'Menveo', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/mening.html' },
+                { text: 'Men B', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/mening-serogroup.html' },
+                { text: 'Polio', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/ipv.html' },
+                { text: 'RSV', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/rsv.html' },
+                { text: 'RSV (Nirsevimab)', url: 'https://www.cdc.gov/vaccines/vpd/rsv/immunization-information-statement.html' },
+                { text: 'Zoster', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/shingles-recombinant.html' },
+                { text: 'Anthrax', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/anthrax.html' },
+                { text: 'Rabies', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/rabies.html' },
+                { text: 'Tick-borne Encephalitis Virus', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/tbe.html' },
+                { text: 'Typhoid', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/typhoid.html' },
+                { text: 'Yellow fever', url: 'https://www.cdc.gov/vaccines/hcp/vis/vis-statements/yf.html' }
+            ]}
+        ];
+
+        $(document).ready(showFirstStep);
+
+        function showFirstStep() {
+            firstStepButtons.forEach((button, index) => {
+                $('#buttonContainer').append(
+                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="showSecondStep(${index}, this)">${button.text}</button>`
+                );
+            });
+        }
+
+        function showSecondStep(index, pageTitleButton) {
+            $('#page_title').text(pageTitleButton.innerText);
+            const secondStepContainer = $('#secondStepContainer').empty();
+            firstStepButtons[index].subButtons.forEach(subButton => {
+                secondStepContainer.append(
+                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="openLink('${subButton.url}')">${subButton.text}</button>`
+                );
+            });
+            toggleContainers(false);
+        }
+
+        function reset() {
+            $('#page_title').text('VIS');
+            toggleContainers(true);
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
+
+        function toggleContainers(showFirstStep) {
+            $('#buttonContainer').toggle(showFirstStep);
+            $('#secondStepContainer').toggleClass('d-none', showFirstStep);
+            $('#homeContainer').toggle(showFirstStep);
+            $('#backContainer').toggleClass('d-none', showFirstStep);
+        }
+    </script>
+</body>
+</html>
