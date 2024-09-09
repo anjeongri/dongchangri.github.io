@@ -98,4 +98,29 @@
         function showFirstStep() {
             firstStepButtons.forEach((button, index) => {
                 $('#buttonContainer').append(
-                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="show
+                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="showSubButtons(${index})">${button.text}</button>`
+                );
+            });
+        }
+
+        function showSubButtons(index) {
+            const button = firstStepButtons[index];
+            $('#buttonContainer').addClass('d-none');
+            $('#secondStepContainer').removeClass('d-none').empty();
+
+            button.subButtons.forEach(subButton => {
+                $('#secondStepContainer').append(
+                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="window.location.href='${subButton.url}'">${subButton.text}</button>`
+                );
+            });
+            $('#backContainer').removeClass('d-none');
+        }
+
+        function reset() {
+            $('#secondStepContainer').addClass('d-none');
+            $('#buttonContainer').removeClass('d-none');
+            $('#backContainer').addClass('d-none');
+        }
+    </script>
+</body>
+</html>
