@@ -511,26 +511,41 @@ function showSummary() {
     const summaryContent = document.getElementById('summaryContent');
     summaryContent.innerHTML = '';
 
-	const inputs = document.querySelectorAll('#surveyForm input[type="hidden"]');
-	inputs.forEach(input => {
-		const responseDiv = document.createElement('div');
-		if (input.name === "welcome") {
-			// Do nothing for "welcome" input
-		} else if (input.name === "recipient" || input.name === "vaccinationType" || input.name === "ageGroup") {
-			responseDiv.innerHTML = `<strong>${input.value}</strong>`;
-		} else if (input.value === "" || input.value === "No") {
-			responseDiv.innerHTML = `${input.name}. ${input.getAttribute('data-text')}: <strong>${input.value}</strong>`;
-		} else {
-			responseDiv.classList.add('highlight');
-			responseDiv.innerHTML = `${input.name}. ${input.getAttribute('data-text')}: <strong>${input.value}</strong>`;
-		}
-		summaryContent.appendChild(responseDiv);
-	});
+    const inputs = document.querySelectorAll('#surveyForm input[type="hidden"]');
+    let vaccinationType = '';
+
+    inputs.forEach(input => {
+        const responseDiv = document.createElement('div');
+        if (input.name === "welcome") {
+            // Do nothing for "welcome" input
+        } else if (input.name === "recipient" || input.name === "vaccinationType" || input.name === "ageGroup") {
+            responseDiv.innerHTML = `<strong>${input.value}</strong>`;
+            if (input.name === "vaccinationType") {
+                vaccinationType = input.value; // vaccinationType 저장
+            }
+        } else if (input.value === "" || input.value === "No") {
+            responseDiv.innerHTML = `${input.name}. ${input.getAttribute('data-text')}: <strong>${input.value}</strong>`;
+        } else {
+            responseDiv.classList.add('highlight');
+            responseDiv.innerHTML = `${input.name}. ${input.getAttribute('data-text')}: <strong>${input.value}</strong>`;
+        }
+        summaryContent.appendChild(responseDiv);
+    });
+
+    // 버튼의 URL 변경
+    const visButton = document.querySelector('.btn-vis');
+    if (vaccinationType === 'COVID') {
+        visButton.setAttribute('onclick', "location.href='https://www.cdc.gov/vaccines/hcp/vis/vis-statements/covid-19.html';");
+    } else if (vaccinationType === 'Influenza') {
+        visButton.setAttribute('onclick', "location.href='https://www.cdc.gov/vaccines/hcp/vis/vis-statements/flu.html';");
+    } else if (vaccinationType === 'All other vaccines') {
+        visButton.setAttribute('onclick', "location.href='./vis.htm';");
+    }
 
     document.getElementById('surveyForm').style.display = 'none';
     document.getElementById('summary').style.display = 'block';
-	
 }
+
 
 window.onload = function() {
     displayQuestion(currentQuestionIndex);
