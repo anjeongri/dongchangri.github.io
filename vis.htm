@@ -16,6 +16,13 @@
 
                 <div id="buttonContainer"></div>
                 <div id="secondStepContainer" class="d-none"></div>
+                
+                <!-- New button added here -->
+                <div id="vaccineInfoContainer">
+                    <button type="button" class="btn btn-secondary btn-block mt-3" onclick="location.href='koreanvis.htm';">백신안내문</button>
+                    <button type="button" class="btn btn-secondary btn-block mt-3" onclick="location.href='spanishvis.htm';">Declaración de Información de la Vacuna</button>
+                </div>
+
                 <div id="homeContainer">
                     <button type="button" class="btn btn-success btn-block mt-3" onclick="location.href='./';">Back to Home</button>
                 </div>
@@ -91,37 +98,4 @@
         function showFirstStep() {
             firstStepButtons.forEach((button, index) => {
                 $('#buttonContainer').append(
-                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="showSecondStep(${index}, this)">${button.text}</button>`
-                );
-            });
-        }
-
-        function showSecondStep(index, pageTitleButton) {
-            $('#page_title').text(pageTitleButton.innerText);
-            const secondStepContainer = $('#secondStepContainer').empty();
-            firstStepButtons[index].subButtons.forEach(subButton => {
-                secondStepContainer.append(
-                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="openLink('${subButton.url}')">${subButton.text}</button>`
-                );
-            });
-            toggleContainers(false);
-        }
-
-        function reset() {
-            $('#page_title').text('VIS');
-            toggleContainers(true);
-        }
-
-        function openLink(url) {
-            window.open(url, '_blank');
-        }
-
-        function toggleContainers(showFirstStep) {
-            $('#buttonContainer').toggle(showFirstStep);
-            $('#secondStepContainer').toggleClass('d-none', showFirstStep);
-            $('#homeContainer').toggle(showFirstStep);
-            $('#backContainer').toggleClass('d-none', showFirstStep);
-        }
-    </script>
-</body>
-</html>
+                    `<button type="button" class="btn btn-secondary btn-block mt-3" onclick="show
